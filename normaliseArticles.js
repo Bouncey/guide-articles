@@ -6,7 +6,7 @@ const { Observable } = Rx;
 const metaRE = /---[\W\w]*?---\n*?/;
 const isAFileRE = /(\.md|\.jsx?|\.html?)$/;
 const shouldBeIgnoredRE = /^(\_|\.)/;
-const isAStubRE = /This\sis\sa\sstub\.\s\[Help\sour\scommunity\sexpand\sit\]/;
+const isAStubRE = /This\sis\sa\sstub\.\s\[Help\sour\scommunity\sexpand\sit\.\]/;
 
 function readDir(dir) {
   return fse.readdirSync(dir)
@@ -102,7 +102,7 @@ title: ${pageTitle}
           .replace(metaRE, '')
           .trim();
         if (
-          normailised.length < 30 |
+          normailised.length < 30 ||
           isAStubRE.test(content)
         ) {
           normailised = appendStub(pageTitle, dirLevel);
