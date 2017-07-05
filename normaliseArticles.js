@@ -55,6 +55,7 @@ const stopWords = [
 
 function titleify(str) {
   return str
+    .toLowerCase()
     .split('-')
     .map(word => {
       if (!word) {
